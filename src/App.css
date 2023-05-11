@@ -1,0 +1,33 @@
+
+.login-page {
+  background: linear-gradient(to right, #003366  0%, #0481ff 100%);
+  width: 100%;
+  float: left;
+  height: 100vh;
+}
+
+.main-bg{
+  background-color: #003366  !important;
+}
+.login-name{
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+}
+.home-main:nth-child( odd ) {
+  background-color: #fff;
+}
+.home-main {
+  width: 100%;
+  float: left;
+  background: #f1f1f1;
+  padding: 10px;
+}
+.home-question{font-size: 15px;}
+.home-answer {
+  font-size: 18px;
+  font-weight: 600;
+}
