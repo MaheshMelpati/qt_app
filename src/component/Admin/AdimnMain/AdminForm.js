@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import authService from '../../../Services/authService'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -7,6 +7,18 @@ function AdminForm() {
     const [answer,setAnswer]=useState('')
     const [type,setType]=useState('')
     const navigate = useNavigate()
+    useEffect(()=>{
+      userLogin()
+    },[])
+
+    const userLogin = async() =>{
+      const det = await localStorage.getItem('loginData')
+      console.log('ssssssssssssss',det);
+      if(!det){
+          navigate('/admin/login')
+      }
+      
+  }
 
     const submit = async () =>{
         //alert('testing')
@@ -28,8 +40,7 @@ function AdminForm() {
     }
     const logoutHandelar = ()=>{
         localStorage.removeItem('loginData')
-        navigate('/admin/login')
-  
+        navigate('/admin/login')  
       }
   return (
     <div className='container mt-5'>

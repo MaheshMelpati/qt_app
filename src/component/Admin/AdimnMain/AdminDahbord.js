@@ -8,7 +8,17 @@ function AdminDahbord() {
   const[qt,setQT] =useState([])
     useEffect(()=>{
         getDat()
+        userLogin()
     },[])
+
+    const userLogin = async() =>{
+      const det = await localStorage.getItem('loginData')
+      console.log('ssssssssssssss',det);
+      if(!det){
+          navigate('/admin/login')
+      }
+      
+  }
     const getDat = async() =>{
         try {
             const data = await authService.AdminData()

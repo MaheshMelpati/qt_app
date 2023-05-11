@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import authService from '../../../Services/authService'
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,6 +8,18 @@ function Login() {
     const [psw,setPSW] = useState('')
     const [loding,setLoding] =useState(false)
     let navigate = useNavigate()
+    useEffect(()=>{
+      userLogin()
+    },[])
+
+    const userLogin = async() =>{
+      const det = await localStorage.getItem('loginData')
+      console.log('ssssssssssssss',det);
+      if(det){
+          navigate('/admin')
+      }
+      
+  }
     const loginHandelar = async() =>{
         setLoding(true)
         if(!email){
