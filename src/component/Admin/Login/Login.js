@@ -23,14 +23,12 @@ function Login() {
     const loginHandelar = async() =>{
         setLoding(true)
         if(!email){
-            toast.error('Plz Enter Email')
-            alert('Plz Enter Email')
+            toast.error('Plz Enter Email')            
             setLoding(false)
         }
         else if(!psw){
 
             toast.error('Plz Enter password')
-            alert('Plz Enter password')
             setLoding(false)
         }
         else{
@@ -42,6 +40,7 @@ function Login() {
                 }
                 const data = await authService.Login(obj);
                 console.log(data)
+                toast.success('success...')
                 navigate('/admin')
                 setLoding(false)
 
@@ -81,7 +80,7 @@ function Login() {
                 
               </div>
               <div className="mb-4">
-                <Link className='login-name' to="/signup">Register</Link>
+                <Link className='login-name' to="/admin/signup">Register</Link>
               </div>
          
           </div>

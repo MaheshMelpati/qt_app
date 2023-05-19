@@ -36,7 +36,14 @@ function AdminDahbord() {
       navigate('/admin/login')
 
     }
-    const viewHandelar= ()=>{
+    const viewHandelar= (data)=>{
+      try {
+        navigate('/admin/view',{ state: { data: data } })
+        console.log(data,'asssss')
+      } catch (error) {
+        console.log('error',error)
+        
+      }
 
     }
     const deleteHandelar = async(item)=>{
