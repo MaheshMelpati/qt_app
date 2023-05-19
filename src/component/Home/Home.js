@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import authService from '../../Services/authService'
+import { connect } from 'react-redux'
+import get_qts from '../../redux/actions/QT-Actions'
 
-function Home() {
+
+function Home(props) {
     const[qdata,setQData] =useState([])
 
+
     useEffect(()=>{
-        getDat()
+        //getDat()
+        get_qts()
     },[])
 
-    const getDat = async() =>{
-        try {
-            const data = await authService.AdminData()
-            console.log(data.data.data,'setQData');
-            if(data.data.success === true){
-            setQData(data.data.data)
-            }
-            
-        } catch (error) {
-            
-        }
-    }
+ 
   return (
     <>
     <div className='container mt-5 home-page'>
-{qdata && qdata.length >= 0 ?
-    qdata.map((q,i)=>{
+{props.qts && props.qts.length >= 0 ?
+    props.qts.map((q,i)=>{
         return(
         <div className='w-100 mb-2 home-main' key={q.id}>
             <p className='mb-1 home-question'>{i+1}. {q.question}</p>
@@ -40,4 +34,9 @@ function Home() {
   )
 }
 
-export default Home
+const mapStateToPropes = state =>{
+    return{
+        qts:state.qts
+    }
+}
+export default connect(mapStateToPropes)(Home)
